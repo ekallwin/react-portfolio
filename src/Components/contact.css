@@ -73,7 +73,7 @@ textarea {
 
 @media (max-width: 600px) {
   form {
-    padding: 15px;
+    padding: 25px;
   }
 
   h2 {
@@ -81,7 +81,7 @@ textarea {
   }
 
   .contact {
-    width: 85%;
+    width: 83%;
     margin: auto;
     padding: 20px;
   }

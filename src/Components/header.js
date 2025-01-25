@@ -1,13 +1,8 @@
 import Typewriter from "typewriter-effect";
-import { toast } from "react-toastify";
+import { NotificationManager } from "react-notifications";
 function Header() {
   const LinkedIn = () => {
-    toast.info('Redirecting to LinkedIn', {
-      position: "top-center",
-      autoClose: 4000,
-      pauseOnHover: false,
-      draggable: false,
-    });
+    NotificationManager.info('Redirecting to LinkedIn', null, 3000);
     setTimeout(() => {
       window.open('https://www.linkedin.com/in/ekallwin/', '_blank');
     }, 2500);
@@ -15,10 +10,11 @@ function Header() {
 
   return (
     <>
-      <div className="item-name" id="Home">
+      <h1 id="Home">Allwin E K</h1>
+      <div className="item-name" >
         <h2 className="titlename" >Hi, I'm Allwin E K</h2>
         <div className="typing-effect" style={{ display: 'flex', flexDirection: 'column' }}>
-          <h2 className="typewritter" style={{marginLeft: '25px'}}>I'm</h2>
+          <h2 className="typewritter" style={{ marginLeft: '25px' }}>I'm</h2>
           <h2 className="typewritter"><Typewriter
             options={{
               strings: ["Front-end Developer", "Designer", "Freelancer"],

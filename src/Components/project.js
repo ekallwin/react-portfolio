@@ -2,18 +2,13 @@ import Dine from "./Project Images/Dine.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { toast } from "react-toastify";
+import { NotificationManager } from "react-notifications";
 import Navbar from "./navbar";
 import Footer from "./footer"
 function projects() {
   const handleLinkClick = (event, url, message) => {
     event.preventDefault();
-    toast.info(message, {
-      position: "top-center",
-      autoClose: 3000,
-      pauseOnHover: false,
-      draggable: false,
-    });
+    NotificationManager.info(message, null, 4000);
     setTimeout(() => {
       window.open(url, "_blank", "noopener,noreferrer");
     }, 2500);
@@ -45,7 +40,6 @@ function projects() {
             </a>
           </div>
         </div>
-
 
       </div>
       <Footer />

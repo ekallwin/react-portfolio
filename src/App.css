@@ -136,7 +136,7 @@
 
 
 body {
-  background-color: #f2f4f3;
+  background-color: #ececec;
   transition: background-color 0.3s, color 0.3s;
   overflow-x: hidden;
   height: 100vh;
@@ -207,7 +207,9 @@ li {
 }
 
 .navbar-link:hover {
-  color: rgb(37, 37, 37);
+  color: rgb(39, 38, 38);
+  text-decoration: underline;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
 }
 
 .navbar-link:active {
@@ -258,6 +260,11 @@ li {
     font-size: 1.7rem;
   }
 
+  .navbar-link:hover {
+    color: rgb(39, 38, 38);
+    text-decoration: none;
+  }
+
   li {
     padding: 15px;
   }
@@ -280,7 +287,6 @@ footer {
   background: #040B44;
   color: white;
   padding: 1px;
-  margin-top: 50px;
 }
 
 footer h4 {
@@ -296,15 +302,18 @@ footer h4 {
 a {
   color: white;
 }
+
 footer h4 {
   font-size: 25px;
   margin-top: 10px;
 }
+
 .footer-text {
   margin: 0 auto;
   text-align: center;
   margin-top: 20px;
 }
+
 .Social:hover {
   transform: scale(1.3);
   cursor: pointer;
@@ -325,7 +334,7 @@ div .Social {
     justify-content: center;
     align-items: center;
   }
-  
+
   h2 {
     margin-top: 120px;
   }
@@ -338,12 +347,16 @@ div .Social {
   }
 
   footer h4 {
-    margin-bottom: 1px;
+    margin-bottom: -15px;
     font-size: 20px;
   }
-}
 
-.toast-container {
-  text-align: left;
-  padding-top: 4px;
+  footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background: #040B44;
+    color: white;
+    padding: 1px;
+  }
 }

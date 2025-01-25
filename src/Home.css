@@ -3,8 +3,9 @@
   font-family: serif;
   color: black;
   text-align: left;
-  margin: 120px 0 10px 20px;
+  margin: 100px 0 10px 20px;
   font-size: 45px;
+  user-select: none;
 }
 
 .item-name h2 {
@@ -23,14 +24,14 @@
 
 .gradient-button {
   color: white;
-  margin-top: 30px;
-  margin-bottom: 20px;
-  margin-left: 25px;
+  margin: 30px auto;
   padding: 15px 25px 20px 25px;
   font-size: 30px;
   border: none;
   border-radius: 25px;
   background: linear-gradient(90deg, #D9006D, #CB0084, #9800E1);
+  display: block;
+  user-select: none;
 }
 
 .gradient-button:hover {

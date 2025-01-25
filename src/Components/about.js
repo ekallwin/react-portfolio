@@ -1,18 +1,14 @@
 import Allwin from "./Images/Allwin.jpg";
 import Resume from "./Resume/Resume.pdf"
-import { toast } from 'react-toastify';
+import { NotificationManager } from "react-notifications";
 function About() {
   const handleDownload = () => {
     if (!Resume) {
-      toast.error('Resume file is not available!',
-        { position: "top-center", autoClose: 3000, pauseOnHover: false, draggable: false }
-      );
+      NotificationManager.error('Resume file is not available!', null, 3000);
       return;
     }
 
-    toast.info('Preparing to download my resume',
-     { position: "top-center", autoClose: 4000, pauseOnHover: false, draggable: false }
-    );
+    NotificationManager.info('Preparing to download my resume', null, 2500);
 
     setTimeout(() => {
       const link = document.createElement('a');
@@ -20,10 +16,8 @@ function About() {
       link.download = 'Resume.pdf';
       link.click();
 
-      toast.success('Resume has been successfully downloaded in your device!',
-        { position: "top-center", autoClose: 4000, pauseOnHover: false, draggable: false }
-      );
-    }, 2500);
+      NotificationManager.success('Resume has been successfully downloaded in your device!', null, 3000);
+    }, 3000);
   };
 
 
