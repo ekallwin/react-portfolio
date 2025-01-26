@@ -2,42 +2,59 @@ import Allwin from "./Images/Allwin.jpg";
 import Resume from "./Resume/Resume.pdf"
 import { toast } from "react-toastify";
 function About() {
-  const handleDownload = () => {
-    if (!Resume) {
-      toast.error('Resume file is not available!', {
-      autoClose: "3000",
+
+let hasDownloaded = false;
+
+const handleDownload = () => {
+  if (!Resume) {
+    toast.error('Resume file is not available!', {
+      autoClose: 3000,
       closeOnClick: false,
       pauseOnHover: false,
       draggable: false,
       progress: undefined,
     });
-      return;
-    }
+    return;
+  }
 
-    toast.info('Preparing to download my resume', {
-      autoClose: "2000",
+  if (hasDownloaded) {
+    toast.warning('You have already downloaded the resume. Please Check in your downloaded files!', {
+      autoClose: 6000,
       closeOnClick: false,
       pauseOnHover: false,
       draggable: false,
       progress: undefined,
     });
+    return;
+  }
 
-    setTimeout(() => {
-      const link = document.createElement('a');
-      link.href = Resume;
-      link.download = 'Resume.pdf';
-      link.click();
+  toast.info('Preparing to download my resume', {
+    autoClose: 3500,
+    closeOnClick: false,
+    pauseOnHover: false,
+    draggable: false,
+    progress: undefined,
+  });
 
-      toast.success('Resume has been successfully downloaded in your device!', {
-      autoClose: "3000",
+  hasDownloaded = true;
+
+  setTimeout(() => {
+    toast.success('Resume has been successfully downloaded in your device !', {
+      autoClose: 3500,
       closeOnClick: false,
       pauseOnHover: false,
       draggable: false,
       progress: undefined,
     });
-    }, 4500);
-  };
+  }, 3475); 
 
+  setTimeout(() => {
+    const link = document.createElement('a');
+    link.href = Resume;
+    link.download = 'Resume.pdf';
+    link.click();
+  }, 6500); 
+};
 
 
   return (
@@ -51,7 +68,7 @@ function About() {
               <br /><br />
               I strongly believe in continuous learning and improving myself, so I try my best to learn in any situation possible, unfavorable or not.
             </figcaption>
-            <button className="gradient-button" style={{  fontSize: '20px' }} onClick={handleDownload}>Download Resume</button>
+            <button className="gradient-button" style={{ fontSize: '20px' }} onClick={handleDownload}>Download Resume</button>
           </figure>
         </div>
       </div>

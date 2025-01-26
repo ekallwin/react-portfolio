@@ -66,8 +66,9 @@ const ContactForm = () => {
     if (!formData.message.trim()) {
       NotificationManager.error("Message cannot be empty", null, 4000);
       isValid = false;
-    } else if (formData.message.length > 200) {
-      NotificationManager.error("Message cannot be more than 200 characters long", null, 4000)
+    } else if (formData.message.length > 250) {
+      NotificationManager.error("Message cannot be more than 250 characters long", null, 4000);
+      isValid = false;
     }
     else {
       const messageRegex = /^[a-zA-Z0-9.,'"!&\s@%#%^*(){}?+-/]*$/;
@@ -80,6 +81,7 @@ const ContactForm = () => {
     return isValid;
   };
 
+  
   const notify = () => {
     const toastId = toast.loading("Sending message...", {
     });
@@ -104,7 +106,10 @@ const ContactForm = () => {
 
     if (validate()) {
       notify();
-      console.log("Form Data:", formData);
+      console.log ("Name: ", formData.name);
+      console.log ("Phone: ", formData.phone);
+      console.log ("Email: " , formData.email);
+      console.log ("Message: ", formData.message);
       setFormData({
         name: "",
         phone: "",
@@ -113,6 +118,8 @@ const ContactForm = () => {
       });
     }
   };
+
+
 
   return (
     <div className="contact" id="Contact">
