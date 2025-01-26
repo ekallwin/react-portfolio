@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 function Footer() {
   const Facebook = () => {
     toast.info('Redirecting to Facebook', {
-      autoClose: "3000",
+      autoClose: 3000,
       closeOnClick: false,
       pauseOnHover: false,
       draggable: false,
@@ -16,7 +16,7 @@ function Footer() {
   };
   const Instagram = () => {
     toast.info('Redirecting to Instagram', {
-      autoClose: "3000",
+      autoClose: 3000,
       closeOnClick: false,
       pauseOnHover: false,
       draggable: false,
@@ -28,7 +28,7 @@ function Footer() {
   };
   const Twitter = () => {
     toast.info('Redirecting to X (Twitter)', {
-      autoClose: "3000",
+      autoClose: 3000,
       closeOnClick: false,
       pauseOnHover: false,
       draggable: false,
@@ -40,7 +40,7 @@ function Footer() {
   };
   const Threads = () => {
     toast.info('Redirecting to Threads (by Instagram)', {
-      autoClose: "3000",
+      autoClose: 3000,
       closeOnClick: false,
       pauseOnHover: false,
       draggable: false,
@@ -52,7 +52,7 @@ function Footer() {
   };
   const LinkedIn = () => {
     toast.info('Redirecting to LinkedIn', {
-      autoClose: "3000",
+      autoClose: 3000,
       closeOnClick: false,
       pauseOnHover: false,
       draggable: false,
@@ -64,7 +64,7 @@ function Footer() {
   };
   const Github = () => {
     toast.info('Redirecting to GitHub', {
-      autoClose: "3000",
+      autoClose: 3000,
       closeOnClick: false,
       pauseOnHover: false,
       draggable: false,

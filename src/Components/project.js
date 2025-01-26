@@ -9,7 +9,7 @@ function projects() {
   const handleLinkClick = (event, url, message) => {
     event.preventDefault();
     toast.info(message, {
-      autoClose: "3000",
+      autoClose: 3000,
       closeOnClick: false,
       pauseOnHover: false,
       draggable: false,

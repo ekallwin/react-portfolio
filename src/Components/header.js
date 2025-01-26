@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 function Header() {
   const LinkedIn = () => {
     toast.info('Redirecting to LinkedIn', {
-      autoClose: "3000",
+      autoClose: 3000,
       closeOnClick: false,
       pauseOnHover: false,
       draggable: false,
