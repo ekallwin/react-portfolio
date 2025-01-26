@@ -18,7 +18,7 @@ const handleDownload = () => {
   }
 
   if (hasDownloaded) {
-    toast.warning('You have already downloaded the resume. Please Check in your downloaded files!', {
+    toast.warning('You have already downloaded the resume. Please check in your downloaded files!', {
       autoClose: 6000,
       closeOnClick: false,
       pauseOnHover: false,
