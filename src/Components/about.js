@@ -3,58 +3,58 @@ import Resume from "./Resume/Resume.pdf"
 import { toast } from "react-toastify";
 function About() {
 
-let hasDownloaded = false;
+  let hasDownloaded = false;
 
-const handleDownload = () => {
-  if (!Resume) {
-    toast.error('Resume file is not available!', {
-      autoClose: 3000,
-      closeOnClick: false,
-      pauseOnHover: false,
-      draggable: false,
-      progress: undefined,
-    });
-    return;
-  }
+  const handleDownload = () => {
+    if (!Resume) {
+      toast.error('Resume file is not available!', {
+        autoClose: 3000,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+      });
+      return;
+    }
 
-  if (hasDownloaded) {
-    toast.warning('You have already downloaded the resume. Please check in your downloaded files!', {
-      autoClose: 6000,
-      closeOnClick: false,
-      pauseOnHover: false,
-      draggable: false,
-      progress: undefined,
-    });
-    return;
-  }
+    if (hasDownloaded) {
+      toast.warning('You have already downloaded the resume. Please check in your downloaded files!', {
+        autoClose: 6000,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+      });
+      return;
+    }
 
-  toast.info('Preparing to download my resume', {
-    autoClose: 3500,
-    closeOnClick: false,
-    pauseOnHover: false,
-    draggable: false,
-    progress: undefined,
-  });
-
-  hasDownloaded = true;
-
-  setTimeout(() => {
-    toast.success('Resume has been successfully downloaded in your device !', {
+    toast.info('Preparing to download my resume', {
       autoClose: 3500,
       closeOnClick: false,
       pauseOnHover: false,
       draggable: false,
       progress: undefined,
     });
-  }, 3475); 
 
-  setTimeout(() => {
-    const link = document.createElement('a');
-    link.href = Resume;
-    link.download = 'Resume.pdf';
-    link.click();
-  }, 6500); 
-};
+    hasDownloaded = true;
+
+    setTimeout(() => {
+      toast.success('Resume has been successfully downloaded in your device !', {
+        autoClose: 3500,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+      });
+    }, 3475);
+
+    setTimeout(() => {
+      const link = document.createElement('a');
+      link.href = Resume;
+      link.download = 'Resume.pdf';
+      link.click();
+    }, 6500);
+  };
 
 
   return (

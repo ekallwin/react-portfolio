@@ -81,7 +81,7 @@ const ContactForm = () => {
     return isValid;
   };
 
-  
+
   const notify = () => {
     const toastId = toast.loading("Sending message...", {
     });
@@ -106,10 +106,10 @@ const ContactForm = () => {
 
     if (validate()) {
       notify();
-      console.log ("Name: ", formData.name);
-      console.log ("Phone: ", formData.phone);
-      console.log ("Email: " , formData.email);
-      console.log ("Message: ", formData.message);
+      console.log("Name: ", formData.name);
+      console.log("Phone: ", formData.phone);
+      console.log("Email: ", formData.email);
+      console.log("Message: ", formData.message);
       setFormData({
         name: "",
         phone: "",
