@@ -34,11 +34,24 @@ const ContactForm = () => {
   const validate = () => {
     let isValid = true;
 
+    const nameRegex = /^[a-zA-Z\s]+$/;
+    const consecutiveIdenticalRegex = /([a-zA-Z])\1{2,}/i;  
+    const consecutiveSequenceRegex = /([a-zA-Z])\2{6,}/;
+
     if (!formData.name.trim()) {
       NotificationManager.error("Name is required", null, 4000);
       isValid = false;
     } else if (formData.name.trim().length < 3) {
-      NotificationManager.error("Name must be at least 3 characters long", null, 4000);
+      NotificationManager.error(`Invalid name: ${formData.name.trim()}`, null, 4000);
+      isValid = false;
+    } else if (!nameRegex.test(formData.name)) {
+      NotificationManager.error(`Invalid name: ${formData.name.trim()}`, null, 4000);
+      isValid = false;
+    } else if (consecutiveIdenticalRegex.test(formData.name.replace(/\s+/g, ''))) {
+      NotificationManager.error(`Invalid name: ${formData.name.trim()}`, null, 4000);
+      isValid = false;
+    } else if (consecutiveSequenceRegex.test(formData.name.replace(/\s+/g, ''))) {
+      NotificationManager.error(`Invalid name: ${formData.name.trim()}`, null, 4000);
       isValid = false;
     }
 
