@@ -35,7 +35,7 @@ function About() {
       draggable: false,
       progress: undefined,
     });
-    }, 3000);
+    }, 4000);
   };
 
 
