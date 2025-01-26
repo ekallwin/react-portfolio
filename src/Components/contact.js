@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { NotificationManager } from "react-notifications";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./contact.css"
 
 const ContactForm = () => {
@@ -33,44 +35,44 @@ const ContactForm = () => {
     let isValid = true;
 
     if (!formData.name.trim()) {
-      NotificationManager.error("Name is required", null, 3000);
+      NotificationManager.error("Name is required", null, 4000);
       isValid = false;
     } else if (formData.name.trim().length < 3) {
-      NotificationManager.error("Name must be at least 3 characters long", null, 3000);
+      NotificationManager.error("Name must be at least 3 characters long", null, 4000);
       isValid = false;
     }
 
-    const phoneRegex = /^[6-9]\d{9}$/;
+    const phoneRegex = /^(?!(\d)\1{9})[6-9]\d{9}$/;
     if (!formData.phone.trim()) {
-      NotificationManager.error("Phone number is required", null, 3000);
+      NotificationManager.error("Phone number is required", null, 4000);
       isValid = false;
     } else if (!phoneRegex.test(formData.phone)) {
-      NotificationManager.error("Invalid phone number", null, 3000);
+      NotificationManager.error("Invalid phone number", null, 4000);
       isValid = false;
     }
 
     if (!formData.email.trim()) {
-      NotificationManager.error("Email address is required", null, 3000);
+      NotificationManager.error("Email address is required", null, 4000);
       isValid = false;
     } else if (
       !formData.email.includes("@") ||
       !formData.email.match(/^[a-zA-Z0-9.-_]+@[a-zA-Z0-9]+(\.[a-zA-Z]{2,})?$/) ||
       !formData.email.match(/\.(com|in|org|edu\.in|net|co\.in)$/)
     ) {
-      NotificationManager.error("Invalid email address", null, 3000);
+      NotificationManager.error("Invalid email address", null, 4000);
       isValid = false;
     }
 
     if (!formData.message.trim()) {
-      NotificationManager.error("Message cannot be empty", null, 3000);
+      NotificationManager.error("Message cannot be empty", null, 4000);
       isValid = false;
     } else if (formData.message.length > 200) {
-      NotificationManager.error("Message cannot be more than 200 characters long", null, 3000)
+      NotificationManager.error("Message cannot be more than 200 characters long", null, 4000)
     }
     else {
       const messageRegex = /^[a-zA-Z0-9.,'"!&\s@%#%^*(){}?+-/]*$/;
       if (!messageRegex.test(formData.message)) {
-        NotificationManager.error("Message can only contain alphabets, numbers, and some special symbols", null, 3000);
+        NotificationManager.error("Message can only contain alphabets, numbers, and some special symbols", null, 4000);
         isValid = false;
       }
     }
@@ -78,11 +80,30 @@ const ContactForm = () => {
     return isValid;
   };
 
+  const notify = () => {
+    const toastId = toast.loading("Sending message...", {
+    });
+
+    setTimeout(() => {
+      toast.update(toastId, {
+        render: "Your message has been sent successfully !",
+        type: "success",
+        isLoading: false,
+        autoClose: 4000,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: true,
+      });
+    }, 2500);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (validate()) {
-      NotificationManager.success("Your message has been sent successfully!", null, 3000);
+      notify();
       console.log("Form Data:", formData);
       setFormData({
         name: "",

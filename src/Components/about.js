@@ -1,14 +1,26 @@
 import Allwin from "./Images/Allwin.jpg";
 import Resume from "./Resume/Resume.pdf"
-import { NotificationManager } from "react-notifications";
+import { toast } from "react-toastify";
 function About() {
   const handleDownload = () => {
     if (!Resume) {
-      NotificationManager.error('Resume file is not available!', null, 3000);
+      toast.error('Resume file is not available!', {
+      autoClose: "3000",
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+    });
       return;
     }
 
-    NotificationManager.info('Preparing to download my resume', null, 2500);
+    toast.info('Preparing to download my resume', {
+      autoClose: "2000",
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+    });
 
     setTimeout(() => {
       const link = document.createElement('a');
@@ -16,7 +28,13 @@ function About() {
       link.download = 'Resume.pdf';
       link.click();
 
-      NotificationManager.success('Resume has been successfully downloaded in your device!', null, 3000);
+      toast.success('Resume has been successfully downloaded in your device!', {
+      autoClose: "3000",
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+    });
     }, 3000);
   };
 
@@ -33,7 +51,7 @@ function About() {
               <br /><br />
               I strongly believe in continuous learning and improving myself, so I try my best to learn in any situation possible, unfavorable or not.
             </figcaption>
-            <button className="gradient-button" style={{ padding: '15px', fontSize: '20px' }} onClick={handleDownload}>Download Resume</button>
+            <button className="gradient-button" style={{  fontSize: '20px' }} onClick={handleDownload}>Download Resume</button>
           </figure>
         </div>
       </div>

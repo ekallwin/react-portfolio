@@ -1,8 +1,14 @@
 import Typewriter from "typewriter-effect";
-import { NotificationManager } from "react-notifications";
+import { toast } from "react-toastify";
 function Header() {
   const LinkedIn = () => {
-    NotificationManager.info('Redirecting to LinkedIn', null, 3000);
+    toast.info('Redirecting to LinkedIn', {
+      autoClose: "3000",
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+    });
     setTimeout(() => {
       window.open('https://www.linkedin.com/in/ekallwin/', '_blank');
     }, 2500);
