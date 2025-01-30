@@ -35,7 +35,7 @@ const ContactForm = () => {
     let isValid = true;
 
     const nameRegex = /^[a-zA-Z\s]+$/;
-    const consecutiveIdenticalRegex = /([a-zA-Z])\1{2,}/i;  
+    const consecutiveIdenticalRegex = /([a-zA-Z])\1{2,}/i;
     const consecutiveSequenceRegex = /([a-zA-Z])\2{6,}/;
 
     if (!formData.name.trim()) {
@@ -63,8 +63,8 @@ const ContactForm = () => {
       NotificationManager.error("Invalid phone number", null, 4000);
       isValid = false;
     } else if (formData.phone === "9876543210") {
-       NotificationManager.error("Invalid phone number", null, 4000);
-       isValid = false;
+      NotificationManager.error("Invalid phone number", null, 4000);
+      isValid = false;
     }
 
     if (!formData.email.trim()) {
@@ -82,8 +82,8 @@ const ContactForm = () => {
     if (!formData.message.trim()) {
       NotificationManager.error("Message cannot be empty", null, 4000);
       isValid = false;
-    } else if (formData.message.length > 250) {
-      NotificationManager.error("Message cannot be more than 250 characters long", null, 4000);
+    } else if (formData.message.length > 500) {
+      NotificationManager.error("Message cannot be more than 500 characters long", null, 4000);
       isValid = false;
     }
     else {
@@ -154,8 +154,9 @@ const ContactForm = () => {
           <label>Email Address</label>
         </div>
         <div className="input-container">
-          <textarea type="text" name="message" value={formData.message} onChange={handleChange} placeholder=" " style={{ width: "100%" }} />
+          <textarea type="text" name="message" value={formData.message} maxLength={500} onChange={handleChange} placeholder=" " style={{ width: "100%" }} />
           <label>Your Message</label>
+          <div className="char-count">{formData.message.length}/500</div>
         </div>
         <button type="submit" className="submit" style={{ marginTop: "10px" }}>Send</button>
       </form>
