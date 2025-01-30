@@ -18,7 +18,7 @@ function About() {
     }
 
     if (hasDownloaded) {
-      toast.warning('You have already downloaded the resume. Please check in your downloaded files!', {
+      toast.warning('You have already initiated downloaded the resume. Please check in your downloaded files!', {
         autoClose: 6000,
         closeOnClick: false,
         pauseOnHover: false,
@@ -39,7 +39,7 @@ function About() {
     hasDownloaded = true;
 
     setTimeout(() => {
-      toast.success('Resume has been successfully downloaded in your device !', {
+      toast.success('The resume download has been started !', {
         autoClose: 3500,
         closeOnClick: false,
         pauseOnHover: false,
@@ -53,7 +53,7 @@ function About() {
       link.href = Resume;
       link.download = 'Resume.pdf';
       link.click();
-    }, 6500);
+    }, 6000);
   };
 
 
