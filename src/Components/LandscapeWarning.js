@@ -8,7 +8,7 @@ const LandscapeWarning = () => {
     const checkConditions = () => {
         const isMobileDevice = /Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
   
-        const isDesktopMode = window.innerWidth > 360 && window.devicePixelRatio > 1.5;
+        const isDesktopMode = window.innerWidth > 1024 && window.devicePixelRatio > 1.5;
   
         const isPortrait = window.matchMedia("(orientation: portrait)").matches;
   
