@@ -8,7 +8,7 @@ const LandscapeWarning = () => {
     const checkOrientation = () => {
         const isMobileDevice = /Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
   
-        const isDesktopMode = window.innerWidth > 800 && window.devicePixelRatio > 1;
+        const isDesktopMode = window.innerWidth > 360 && window.devicePixelRatio > 1;
   
         const isPortrait = window.matchMedia("(orientation: portrait)").matches;
   
@@ -28,8 +28,8 @@ const LandscapeWarning = () => {
   return (
     showWarning && (
       <div
-        style={{ position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh",background: "#ececec", color: "red", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "1.5rem", textAlign: "center", zIndex: 10000,}}> 
-        <FontAwesomeIcon icon={faTriangleExclamation} size="lg" style={{color: "#FFD43B", marginRight: "10px"}} /> 
+        style={{ position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh",background: "#ececec", color: "red", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "16px", textAlign: "center", zIndex: 10000,}}> 
+        <FontAwesomeIcon icon={faTriangleExclamation} size="lg" style={{color: "#FFD43B", marginRight: "2px"}} /> 
         <p>This website is only viewable in landscape mode</p>
       </div>
     )
