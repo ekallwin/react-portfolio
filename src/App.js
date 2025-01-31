@@ -9,12 +9,10 @@ import 'react-notifications/lib/notifications.css';
 import Home from "./Home"
 import Projects from "./Components/project"
 import Achievements from "./Components/achievements"
-import LandscapeWarning from "./Components/LandscapeWarning"
 function App() {
 
   return (
     <BrowserRouter>
-    <LandscapeWarning />
       <NotificationContainer />
       <ToastContainer
         position="top-center"
