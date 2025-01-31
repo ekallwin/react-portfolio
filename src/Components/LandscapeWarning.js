@@ -5,23 +5,23 @@ const LandscapeWarning = () => {
   const [showWarning, setShowWarning] = useState(false);
 
   useEffect(() => {
-    const checkOrientation = () => {
+    const checkConditions = () => {
         const isMobileDevice = /Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
   
-        const isDesktopMode = window.innerWidth > 360 && window.devicePixelRatio > 1;
+        const isDesktopMode = window.innerWidth > 360 && window.devicePixelRatio > 1.5;
   
         const isPortrait = window.matchMedia("(orientation: portrait)").matches;
   
         setShowWarning(isMobileDevice && isDesktopMode && isPortrait);
       };
   
-      checkOrientation();
-      window.addEventListener("resize", checkOrientation);
-      window.addEventListener("orientationchange", checkOrientation);
+      checkConditions();
+      window.addEventListener("resize", checkConditions);
+      window.addEventListener("orientationchange", checkConditions);
   
       return () => {
-        window.removeEventListener("resize", checkOrientation);
-        window.removeEventListener("orientationchange", checkOrientation);
+        window.removeEventListener("resize", checkConditions);
+        window.removeEventListener("orientationchange", checkConditions);
       };
     }, []);
 
