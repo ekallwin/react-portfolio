@@ -154,7 +154,7 @@ const ContactForm = () => {
           <label>Email Address</label>
         </div>
         <div className="input-container">
-          <textarea type="text" name="message" value={formData.message} maxLength={500} onChange={handleChange} placeholder=" " style={{ width: "100%" }} />
+          <textarea type="text" name="message" value={formData.message} maxLength={500} onChange={handleChange} placeholder=" " style={{ width: "100%"}} />
           <label>Your Message</label>
           <div className="char-count">{formData.message.length}/500</div>
         </div>

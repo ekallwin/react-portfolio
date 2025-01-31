@@ -7,7 +7,7 @@
   overflow: hidden;
   border: 1px solid #ddd;
   border-radius: 8px;
-  margin-top: 120px;
+  margin-top: 150px;
   margin-bottom: 20px;
 }
 
@@ -33,7 +33,7 @@
   width: fit-content;
   position: relative;
   left: 50%;
-  margin-top: 100px;
+  margin-top: 40px;
   transform: translate(-50%, -50%);
   color: black;
   font-family: serif;
@@ -74,13 +74,13 @@ button:hover {
 @media (max-width: 768px) {
   .carousel {
     max-width: 90%;
-    margin-top: 200px;
+    margin-top: 150px;
   }
 
   .carousel-caption {
     width: fit-content;
     position: relative;
-    top: 30%;
+    margin-top: 60px;
     left: 50%;
     transform: translate(-50%, -50%);
     color: black;
