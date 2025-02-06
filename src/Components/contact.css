@@ -119,7 +119,7 @@ textarea {
 .input-container input[type="text"]:focus+label,
 .input-container input[type="text"]:not(:placeholder-shown)+label,
 .input-container #phone:focus+label,
-.input-container #phone:not(:placeholder-shown)+label
+.input-container #phone:not(:placeholder-shown)+label,
 .input-container textarea:focus+label,
 .input-container textarea:not(:placeholder-shown)+label {
   top: -1px;
