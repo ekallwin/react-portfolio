@@ -21,6 +21,7 @@ label {
 }
 
 input[type="text"],
+#phone,
 input[type="email"],
 textarea {
   width: 100%;
@@ -35,6 +36,7 @@ textarea {
 
 
 input[type="text"]:focus,
+#phone:focus,
 input[type="email"]:focus,
 textarea:focus {
   border-color: #007bff;
@@ -114,9 +116,11 @@ textarea {
   transition: 0.2s ease-in-out;
 }
 
-.input-container input:focus+label,
+.input-container input[type="text"]:focus+label,
+.input-container input[type="text"]:not(:placeholder-shown)+label,
+.input-container #phone:focus+label,
+.input-container #phone:not(:placeholder-shown)+label
 .input-container textarea:focus+label,
-.input-container input:not(:placeholder-shown)+label,
 .input-container textarea:not(:placeholder-shown)+label {
   top: -1px;
   left: 10px;
@@ -128,4 +132,8 @@ textarea {
 .input-container textarea:focus {
   border-color: #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+.input-container #phone:focus+label,
+.input-container #phone:not(:placeholder-shown)+label {
+  left: -20px;
 }

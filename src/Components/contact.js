@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NotificationManager } from "react-notifications";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./contact.css"
-
+import Flag from "./Flag.png"
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -11,6 +11,43 @@ const ContactForm = () => {
     email: "",
     message: "",
   });
+
+  const [mobileData, setMobileData] = useState([]);
+  const [operatorInfo, setOperatorInfo] = useState(null);
+
+  useEffect(() => {
+    fetch("http://api-allwin.github.io/mobile_circle-data/indian_mobile_circle_dataset.json")
+      .then((response) => response.json())
+      .then((data) => setMobileData(data))
+      .catch((error) => console.error("Error fetching mobile circle data:", error));
+  }, []);
+
+  const handlePhoneChange = (e) => {
+    let value = e.target.value.replace(/\D/g, "");
+
+    if (value.length > 5) {
+      value = value.slice(0, 5) + " " + value.slice(5);
+    }
+    if (value.length > 10) {
+      value = value.slice(0, 11);
+    }
+
+    setFormData({ ...formData, phone: value });
+
+    const cleanNumber = value.replace(/\s/g, "");
+    if (cleanNumber.length >= 10) {
+      const prefix = cleanNumber.slice(0, 4);
+      const match = mobileData.find((item) => item?.number?.startsWith(prefix));
+
+      if (match) {
+        setOperatorInfo(`${match.operator} ‎ ${match.circle}`);
+      } else {
+        setOperatorInfo("Invalid");
+      }
+    } else {
+      setOperatorInfo(null);
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -55,18 +92,16 @@ const ContactForm = () => {
       isValid = false;
     }
 
-    const phoneRegex = /^(?!(\d)\1{9})[6-9]\d{9}$/;
+
+    if (!operatorInfo) return null;
+      NotificationManager.error("Invalid phone number", null, 4000);
+      isValid = false;
+
     if (!formData.phone.trim()) {
       NotificationManager.error("Phone number is required", null, 4000);
       isValid = false;
-    } else if (!phoneRegex.test(formData.phone)) {
-      NotificationManager.error("Invalid phone number", null, 4000);
-      isValid = false;
-    } else if (formData.phone === "9876543210") {
-      NotificationManager.error("Invalid phone number", null, 4000);
-      isValid = false;
-    }
-
+    } 
+     
     if (!formData.email.trim()) {
       NotificationManager.error("Email address is required", null, 4000);
       isValid = false;
@@ -145,16 +180,27 @@ const ContactForm = () => {
           <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="" pattern="[A-Za-z\s]*" onInput={(e) => { e.target.value = e.target.value.replace(/[^A-Za-z\s]/g, ""); }} style={{ width: "100%" }} />
           <label>Name</label>
         </div>
-        <div className="input-container">
-          <input type="text" name="phone" value={formData.phone} onChange={handleChange} placeholder=" " maxLength="10" pattern="[0-9]*" onInput={(e) => e.target.value = e.target.value.replace(/\D/g, "")} style={{ width: "100%" }} />
-          <label>Phone Number</label>
+        <div className="input-container" >
+          <img src={Flag} alt="Indian Flag" style={{ position: 'absolute', top: '20px', left: '8px', transform: 'translateY(-50%)', borderRadius: '0', width: '28px', height: '20px', pointerEvents: 'none' }} />
+          <input style={{ paddingLeft: '43px', width: '100%', fontSize: '16px', height: '40px', boxSizing: 'border-box', }}
+            id="phone"
+            type="text"
+            inputMode="numeric"
+            name="phone"
+            value={formData.phone}
+            onChange={handlePhoneChange}
+            placeholder=""
+            maxLength="11"
+          />
+          <label style={{ marginLeft: '30px' }}>Phone Number</label>
         </div>
-        <div className="input-container">
+        {operatorInfo && <p style={{marginTop: "-30px"}}>{operatorInfo}</p>}
+        <div className="input-container" style={{marginTop: "20px"}}>
           <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder=" " style={{ width: "100%" }} />
           <label>Email Address</label>
         </div>
         <div className="input-container">
-          <textarea type="text" name="message" value={formData.message} maxLength={500} onChange={handleChange} placeholder=" " style={{ width: "100%"}} />
+          <textarea type="text" name="message" value={formData.message} maxLength={500} onChange={handleChange} placeholder=" " style={{ width: "100%" }} />
           <label>Your Message</label>
           <div className="char-count">{formData.message.length}/500</div>
         </div>
