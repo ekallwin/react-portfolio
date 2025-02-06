@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { NotificationManager } from "react-notifications";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -72,13 +72,13 @@ const ContactForm = () => {
 
     const phoneRegex = /^(?!([0-9])\1{9})[6-9]\d{9}$/;
 
-if (!formData.phone.trim()) {
-  NotificationManager.error("Please enter your phone number.", null, 4000);
-  isValid = false;
-} else if (!phoneRegex.test(formData.phone.trim().replace(/\s/g, ""))) { 
-  NotificationManager.error("Invalid phone number", null, 4000);
-  isValid = false;
-}
+    if (!formData.phone.trim()) {
+      NotificationManager.error("Please enter your phone number.", null, 4000);
+      isValid = false;
+    } else if (!phoneRegex.test(formData.phone.trim().replace(/\s/g, ""))) {
+      NotificationManager.error("Invalid phone number", null, 4000);
+      isValid = false;
+    }
 
 
 
@@ -174,7 +174,7 @@ if (!formData.phone.trim()) {
           />
           <label style={{ marginLeft: '30px' }}>Phone Number</label>
         </div>
-        <div className="input-container" style={{marginTop: "20px"}}>
+        <div className="input-container" style={{ marginTop: "20px" }}>
           <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder=" " style={{ width: "100%" }} />
           <label>Email Address</label>
         </div>
