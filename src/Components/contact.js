@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { NotificationManager } from "react-notifications";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,15 +12,6 @@ const ContactForm = () => {
     message: "",
   });
 
-  const [mobileData, setMobileData] = useState([]);
-  const [operatorInfo, setOperatorInfo] = useState(null);
-
-  useEffect(() => {
-    fetch("http://api-allwin.github.io/mobile_circle-data/indian_mobile_circle_dataset.json")
-      .then((response) => response.json())
-      .then((data) => setMobileData(data))
-      .catch((error) => console.error("Error fetching mobile circle data:", error));
-  }, []);
 
   const handlePhoneChange = (e) => {
     let value = e.target.value.replace(/\D/g, "");
@@ -34,19 +25,6 @@ const ContactForm = () => {
 
     setFormData({ ...formData, phone: value });
 
-    const cleanNumber = value.replace(/\s/g, "");
-    if (cleanNumber.length >= 10) {
-      const prefix = cleanNumber.slice(0, 4);
-      const match = mobileData.find((item) => item?.number?.startsWith(prefix));
-
-      if (match) {
-        setOperatorInfo(`${match.operator} ‎ ${match.circle}`);
-      } else {
-        setOperatorInfo("");
-      }
-    } else {
-      setOperatorInfo(null);
-    }
   };
 
   const handleChange = (e) => {
@@ -92,16 +70,18 @@ const ContactForm = () => {
       isValid = false;
     }
 
+    const phoneRegex = /^(?!([0-9])\1{9})[6-9]\d{9}$/;
 
-    if (!operatorInfo) return null;
-      NotificationManager.error("Invalid phone number", null, 4000);
-      isValid = false;
+if (!formData.phone.trim()) {
+  NotificationManager.error("Please enter your phone number.", null, 4000);
+  isValid = false;
+} else if (!phoneRegex.test(formData.phone.trim().replace(/\s/g, ""))) { 
+  NotificationManager.error("Invalid phone number", null, 4000);
+  isValid = false;
+}
 
-    if (!formData.phone.trim()) {
-      NotificationManager.error("Phone number is required", null, 4000);
-      isValid = false;
-    } 
-     
+
+
     if (!formData.email.trim()) {
       NotificationManager.error("Email address is required", null, 4000);
       isValid = false;
@@ -194,7 +174,6 @@ const ContactForm = () => {
           />
           <label style={{ marginLeft: '30px' }}>Phone Number</label>
         </div>
-        {operatorInfo && <p style={{marginTop: "-30px"}}>{operatorInfo}</p>}
         <div className="input-container" style={{marginTop: "20px"}}>
           <input type="text" name="email" value={formData.email} onChange={handleChange} placeholder=" " style={{ width: "100%" }} />
           <label>Email Address</label>
