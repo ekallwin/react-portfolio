@@ -42,7 +42,7 @@ const ContactForm = () => {
       if (match) {
         setOperatorInfo(`${match.operator} ‎ ${match.circle}`);
       } else {
-        setOperatorInfo("Invalid");
+        setOperatorInfo("");
       }
     } else {
       setOperatorInfo(null);
