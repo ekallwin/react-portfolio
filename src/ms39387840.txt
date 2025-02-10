@@ -1,5 +1,0 @@
-﻿{
-  "Description": "Domain ownership verification file for Microsoft 365 - place in the website root",
-  "Domain": "ekallwin.tech",
-  "Id": "d68f06cb-e356-4591-affa-c7a34f964e0f"
-}
