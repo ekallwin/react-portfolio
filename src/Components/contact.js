@@ -73,7 +73,7 @@ const ContactForm = () => {
     const phoneRegex = /^(?!([0-9])\1{9})[6-9]\d{9}$/;
 
     if (!formData.phone.trim()) {
-      NotificationManager.error("Please enter your phone number.", null, 4000);
+      NotificationManager.error("Phone number is required", null, 4000);
       isValid = false;
     } else if (!phoneRegex.test(formData.phone.trim().replace(/\s/g, ""))) {
       NotificationManager.error("Invalid phone number", null, 4000);
